@@ -7,6 +7,11 @@
     flex-wrap: wrap;
     width: $width100vw;
 
+    @media (max-width: 626px) {
+      display: flex;
+      justify-content: center;
+    }
+
     h1 {
       font-size: 1em;
     }
@@ -19,7 +24,6 @@
     border-radius: 25px;
     padding: 2rem;
     margin: 1.08rem;
-    width: 12%;
     animation: zoom 0.5s ease-in;
 
     @keyframes zoom {

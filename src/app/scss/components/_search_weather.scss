@@ -4,16 +4,19 @@
 .search-weather {
   @include flex-content;
   flex-direction: $flexColumn;
+  flex-wrap: wrap;
   width: $width100vw;
   margin-top: $space1rem;
 
   p {
     font-size: 1.5em;
+    text-align: center;
     color: #253858;
   }
 
   &__searching {
     @include flex-content;
+    flex-wrap: wrap;
 
     .validation-text {
       color: red;
@@ -23,11 +26,11 @@
 
     input {
       height: 40px;
-      width: 450px;
+      width: 250px;
     }
 
     button {
-      margin-left: $space1rem;
+      margin: 0 0.5rem;
       padding: 0.2rem 2rem;
       font-weight: 600;
       background: $blueBackground;

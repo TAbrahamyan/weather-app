@@ -12,6 +12,7 @@ export class WeatherService {
   async fetchWeathers(): Promise<void> {
     try {
       let response: Response;
+
       if (location.protocol === 'http:') {
         response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.inputValue}&units=metric&APPID=434aaa551c8218a43b2c291d6e2ca8bc`);
       } else {
