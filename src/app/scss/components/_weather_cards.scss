@@ -1,0 +1,87 @@
+@import '../mixins';
+@import '../variables';
+
+.weather-cards {
+  &__cards {
+    display: $displayFlex;
+    flex-wrap: wrap;
+    width: $width100vw;
+
+    h1 {
+      font-size: 1em;
+    }
+  }
+
+  &__body {
+    @include flex-content;
+    flex-direction: $flexColumn;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    padding: 2rem;
+    margin: 1.08rem;
+    width: 12%;
+    animation: zoom 0.5s ease-in;
+
+    @keyframes zoom {
+      0% {
+        transform: scale(0);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  }
+
+  &__info {
+    @include flex-content;
+    flex-direction: $flexColumn;
+
+    h1 {
+      font-size: 1.5em;
+    }
+
+    div {
+      @include flex-content;
+
+      h1 {
+        &:nth-child(2) {
+          margin-left: 5px;
+          margin-right: 3px;
+        }
+
+        &:not(:nth-child(2)) {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .is-celsius {
+      color: #FF6B00;
+      pointer-events: none;
+    }
+
+    .is-fahrenheit {
+      color: #000;
+      pointer-events: auto;
+    }
+  }
+
+  &__result {
+    display: $displayFlex;
+    flex-direction: row;
+
+    div {
+      display: $displayFlex;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-top: 2rem;
+    }
+
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}
