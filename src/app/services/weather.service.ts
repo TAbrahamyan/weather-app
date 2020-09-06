@@ -19,11 +19,10 @@ export class WeatherService {
         response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.inputValue}&units=metric&APPID=434aaa551c8218a43b2c291d6e2ca8bc`);
       }
 
-      const data: any = await response.json();
+      const data = await response.json();
 
       if (data.message) {
-        this.validationText = 'City not found';
-
+        this.validationText = data?.message;
         return;
       }
 

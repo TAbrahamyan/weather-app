@@ -4,11 +4,11 @@
 .weather-cards {
   &__cards {
     display: $displayFlex;
-    flex-wrap: wrap;
+    flex-wrap: $flexWrap;
     width: $width100vw;
 
-    @media (max-width: 626px) {
-      display: flex;
+    @media (max-width: 939px) {
+      display: $displayFlex;
       justify-content: center;
     }
 
@@ -25,44 +25,7 @@
     padding: 2rem;
     margin: 1.08rem;
 
-    &:nth-child(1n) {
-      animation: animate-zoom 0.5s ease-in;
-
-      @keyframes animate-zoom {
-        0% {
-          transform: scale(0);
-        }
-        100% {
-          transform: scale(1);
-        }
-      }
-    }
-
-    &:nth-child(2n) {
-      animation: animate-top 0.7s ease-in;
-
-      @keyframes animate-top {
-        0% {
-          transform: translateY(-800px);
-        }
-        100% {
-          transform: translateY(0);
-        }
-      }
-    }
-
-    &:nth-child(3n) {
-      animation: animate-bottom 0.9s ease-in;
-
-      @keyframes animate-bottom {
-        0% {
-          transform: translateY(800px);
-        }
-        100% {
-          transform: translateY(0);
-        }
-      }
-    }
+    @include cards-animation;
   }
 
   &__info {

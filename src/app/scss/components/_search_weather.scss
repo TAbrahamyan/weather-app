@@ -2,31 +2,36 @@
 @import '../variables';
 
 .search-weather {
-  @include flex-content;
+  display: $displayFlex;
   flex-direction: $flexColumn;
-  flex-wrap: wrap;
+  flex-wrap: $flexWrap;
   width: $width100vw;
   margin-top: $space1rem;
 
   p {
     font-size: 1.5em;
-    text-align: center;
+    text-align: $centerText;
     color: #253858;
+  }
+
+  .validation-text {
+    color: red;
+    text-align: $centerText;
+    font-size: 1em;
   }
 
   &__searching {
     @include flex-content;
-    flex-wrap: wrap;
+    flex-wrap: $flexWrap;
 
-    .validation-text {
-      color: red;
-      text-align: center;
-      font-size: 1em;
+    @media (max-width: 585px) {
+      display: $displayFlex;
+      flex-direction: $flexColumn;
     }
 
     input {
       height: 40px;
-      width: 250px;
+      width: 300px;
     }
 
     button {

@@ -9,20 +9,27 @@ export class SearchWeatherService {
 
   stringMask = (inputValue: string): RegExp[] => [ ...inputValue ].map(() => /[a-zA-Z]/g);
 
-  addCityHandler(): void {
-    if (!this.weatherService.inputValue.trim()) {
-      this.weatherService.validationText = 'Input should not be empty';
-
-      return;
-    }
-
-    this.weatherService.fetchWeathers();
-    this.weatherService.inputValue = '';
-    this.weatherService.validationText = '';
-  }
-
   clearListHandler(): void {
     this.weatherService.cities.length = 0;
     localStorage.removeItem('cities');
+  }
+
+  addCityHandler(): void {
+    const weatherService: WeatherService = this.weatherService;
+    const existedCity: boolean = weatherService.cities.some(({ name }) => name.toLowerCase() === weatherService.inputValue.toLowerCase());
+
+    if (!weatherService.inputValue.trim()) {
+      weatherService.validationText = 'Input should not be empty';
+      return;
+    }
+
+    if (existedCity) {
+      weatherService.validationText = `City ${weatherService.inputValue} already exists on the list`;
+      return;
+    }
+
+    weatherService.fetchWeathers();
+    weatherService.inputValue = '';
+    weatherService.validationText = '';
   }
 }
