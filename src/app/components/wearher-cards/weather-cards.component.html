@@ -1,36 +1,35 @@
 <div class="weather-cards">
-  <div class="weather-cards__cards">
-    <div *ngFor="let city of weatherService.cities; let i = index" class="weather-cards__body">
-      <div class="weather-cards__info">
-        <h1>{{ city.name }}</h1>
+  <div *ngFor="let city of weatherService.cities; let i = index" class="weather-cards__body">
+    <div class="weather-cards__info">
+      <h1>{{ city.name }}</h1>
 
-        <div>
-          <h1 [class]="city.isCelsius ? 'is-celsius' : 'is-fahrenheit'" (click)="isCelsiusHandler(i, true)">
-            °C
-          </h1>
+      <div>
+        <h1 [class]="city.isCelsius ? 'is-celsius' : 'is-fahrenheit'" (click)="isCelsiusHandler(i, true)">
+          °C
+        </h1>
 
-          <h1>/</h1>
+        <h1>/</h1>
 
-          <h1 [class]="!city.isCelsius ? 'is-celsius' : 'is-fahrenheit'" (click)="isCelsiusHandler(i, false)">
-            °F
-          </h1>
-        </div>
+        <h1 [class]="!city.isCelsius ? 'is-celsius' : 'is-fahrenheit'" (click)="isCelsiusHandler(i, false)">
+          °F
+        </h1>
       </div>
-
-      <div class="weather-cards__result">
-        <div *ngIf="city.isCelsius">
-          <img [src]="city.tempCelsius < 20 ? cloudImg : cloudWithSunImg">
-          <h1>{{ city.tempCelsius }}°C</h1>
-        </div>
-
-        <div *ngIf="!city.isCelsius">
-          <img [src]="city.tempFahrenheit < 68 ? cloudImg : cloudWithSunImg">
-          <h1>{{ city.tempFahrenheit }}°F</h1>
-        </div>
-
-      </div>
-
-      <p [routerLink]="['/forecast-weather', i]" class="more-info">Get more information</p>
     </div>
+
+    <div class="weather-cards__result">
+      <ng-container *ngIf="city.isCelsius; else isFahrenheit">
+        <img [src]="city.tempCelsius < 20 ? cloudImg : cloudWithSunImg">
+        <h1>{{ city.tempCelsius }}°C</h1>
+      </ng-container>
+
+      <ng-template #isFahrenheit>
+        <img [src]="city.tempFahrenheit < 67 ? cloudImg : cloudWithSunImg">
+        <h1>{{ city.tempFahrenheit }}°F</h1>
+      </ng-template>
+    </div>
+
+    <p [routerLink]="['/forecast-weather', i]" class="more-info">
+      Get more information
+    </p>
   </div>
 </div>

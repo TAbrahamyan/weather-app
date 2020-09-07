@@ -1,28 +1,24 @@
 @import '../../app';
 
 .weather-cards {
-  &__cards {
+  display: $displayFlex;
+  flex-wrap: $flexWrap;
+  width: $width100vw;
+
+  @media (max-width: 939px) {
     display: $displayFlex;
-    flex-wrap: $flexWrap;
-    width: $width100vw;
+    justify-content: center;
+  }
 
-    @media (max-width: 939px) {
-      display: $displayFlex;
-      justify-content: center;
-    }
-
-    h1 {
-      font-size: 1em;
-    }
+  h1 {
+    font-size: 1.5em;
   }
 
   &__body {
-    @include flex-content;
-    flex-direction: $flexColumn;
     border: 2px solid #ccc;
-    border-radius: 25px;
+    border-radius: 35px;
     padding: 2rem;
-    margin: 1.08rem;
+    margin: 1.1rem 1.1rem 0 1.05rem;
 
     @include cards-animation;
   }
@@ -31,33 +27,10 @@
     @include flex-content;
     flex-direction: $flexColumn;
 
-    h1 {
-      font-size: 1.5em;
-    }
-
     div {
       @include flex-content;
 
-      h1 {
-        &:nth-child(2) {
-          margin-left: 5px;
-          margin-right: 3px;
-        }
-
-        &:not(:nth-child(2)) {
-          cursor: pointer;
-        }
-      }
-    }
-
-    .is-celsius {
-      color: #FF6B00;
-      pointer-events: none;
-    }
-
-    .is-fahrenheit {
-      color: #000;
-      pointer-events: auto;
+      @include celsius-fahrenheit;
     }
   }
 
@@ -81,6 +54,7 @@
   }
 
   .more-info {
+    margin: 0;
     outline: none;
     cursor: pointer;
   }

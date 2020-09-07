@@ -1,5 +1,5 @@
 <div class="forecast-weather" *ngIf="cities">
-  <div>
+  <div class="forecast-weather__info">
     <h1>{{ cities.name }}</h1>
 
     <div class="switcher">
@@ -15,19 +15,19 @@
     </div>
   </div>
 
-  <ul>
-    <li *ngFor="let city of cities.forecasts">
+  <div class="forecast-weather__list">
+    <div class="forecast-weather__result" *ngFor="let city of cities.forecasts">
       <p>{{ city.forecastTempTime | date: 'dd MMM HH:mm'}}</p>
 
-      <div *ngIf="isCelsius">
+      <ng-container *ngIf="isCelsius; else isFahrenheit">
         <h1>{{ city.forecastTempCelsius }}°C</h1>
         <img [src]="city.forecastTempCelsius < 20 ? cloudImg : cloudWithSunImg">
-      </div>
+      </ng-container>
 
-      <div *ngIf="!isCelsius">
+      <ng-template #isFahrenheit>
         <h1>{{ city.forecastTempFahrenheit }}°F</h1>
-        <img [src]="city.forecastTempFahrenheit < 68 ? cloudImg : cloudWithSunImg">
-      </div>
-    </li>
-  </ul>
+        <img [src]="city.forecastTempFahrenheit < 67 ? cloudImg : cloudWithSunImg">
+      </ng-template>
+    </div>
+  </div>
 </div>

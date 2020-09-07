@@ -12,18 +12,14 @@ import { ICitiesInfo } from '../../interfaces';
 
 export class ForecastWeatherComponent implements OnInit {
   cities: ICitiesInfo;
-  cloudImg: string;
-  cloudWithSunImg: string;
-  isCelsius: boolean;
+  cloudImg: string = '../../../assets/img/cloud.png';
+  cloudWithSunImg: string = '../../../assets//img/cloud-with-sun.png';
+  isCelsius: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
     private weatherService: WeatherService,
-  ) {
-    this.cloudImg = '../../../assets/img/cloud.png';
-    this.cloudWithSunImg = '../../../assets//img/cloud-with-sun.png';
-    this.isCelsius = true;
-  }
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -33,9 +29,9 @@ export class ForecastWeatherComponent implements OnInit {
 
   isCelsiusHandler(isCelsius: boolean): void {
     if (isCelsius) {
-      this.isCelsius = true;
+      this.isCelsius = isCelsius;
     } else {
-      this.isCelsius = false;
+      this.isCelsius = isCelsius;
     }
   }
 }

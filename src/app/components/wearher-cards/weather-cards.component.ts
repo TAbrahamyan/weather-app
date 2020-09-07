@@ -10,21 +10,18 @@ import { ICitiesInfo } from '../../interfaces';
 })
 
 export class WeatherCardsComponent {
-  cloudImg: string;
-  cloudWithSunImg: string;
+  cloudImg: string = '../../../assets//img/cloud.png';
+  cloudWithSunImg: string = '../../../assets//img/cloud-with-sun.png';
 
-  constructor(public weatherService: WeatherService) {
-    this.cloudImg = '../../../assets//img/cloud.png';
-    this.cloudWithSunImg = '../../../assets//img/cloud-with-sun.png';
-  }
+  constructor(public weatherService: WeatherService) { }
 
   isCelsiusHandler(cityIndex: number, isCelsius: boolean): void {
     this.weatherService.cities.map((city: ICitiesInfo, index: number) => {
       if (index === cityIndex) {
         if (isCelsius) {
-          city.isCelsius = true;
+          city.isCelsius = isCelsius;
         } else {
-          city.isCelsius = false;
+          city.isCelsius = isCelsius;
         }
       }
 

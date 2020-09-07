@@ -23,7 +23,7 @@
 
     @keyframes animate-top {
       0% {
-        transform: translateY(-500px);
+        transform: translateY(-700px);
       }
       100% {
         transform: translateY(0);
@@ -42,5 +42,31 @@
         transform: translateY(0);
       }
     }
+  }
+}
+
+@mixin celsius-fahrenheit {
+  h1 {
+    font-size: 1.3em;
+    margin: 0;
+
+    &:nth-child(2) {
+      margin-left: 5px;
+      margin-right: 3px;
+    }
+
+    &:not(:nth-child(2)) {
+      cursor: pointer;
+    }
+  }
+
+  .is-celsius {
+    color: #FF6B00;
+    pointer-events: none;
+  }
+
+  .is-fahrenheit {
+    color: #000;
+    pointer-events: auto;
   }
 }
