@@ -1,4 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
-
-/* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+@import './app/scss/fonts';
+
+*,
+body,
+.container {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  font-family: 'Heebo';
+}

@@ -23,7 +23,7 @@
 
     @keyframes animate-top {
       0% {
-        transform: translateY(-800px);
+        transform: translateY(-500px);
       }
       100% {
         transform: translateY(0);
@@ -32,11 +32,11 @@
   }
 
   &:nth-child(3n) {
-    animation: animate-bottom 0.9s ease-in;
+    animation: animate-bottom 0.8s ease-in;
 
     @keyframes animate-bottom {
       0% {
-        transform: translateY(800px);
+        transform: translateY(700px);
       }
       100% {
         transform: translateY(0);

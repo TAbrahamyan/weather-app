@@ -6,7 +6,7 @@ import { ICitiesInfo } from '../../interfaces';
 @Component({
   selector: 'app-weather-cards',
   templateUrl: './weather-cards.component.html',
-  styleUrls: [ '../../scss/app.scss' ]
+  styleUrls: [ './weather-cards.component.scss' ]
 })
 
 export class WeatherCardsComponent {
@@ -22,10 +22,8 @@ export class WeatherCardsComponent {
     this.weatherService.cities.map((city: ICitiesInfo, index: number) => {
       if (index === cityIndex) {
         if (isCelsius) {
-          city.temp = Math.round((city.temp - 32) * 5 / 9);
           city.isCelsius = true;
         } else {
-          city.temp = Math.round((city.temp * 9 / 5) + 32);
           city.isCelsius = false;
         }
       }

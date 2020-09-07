@@ -1,0 +1,33 @@
+<div class="forecast-weather" *ngIf="cities">
+  <div>
+    <h1>{{ cities.name }}</h1>
+
+    <div class="switcher">
+      <h1 [class]="isCelsius ? 'is-celsius' : 'is-fahrenheit'" (click)="isCelsiusHandler(true)">
+        °C
+      </h1>
+
+      <h1>/</h1>
+
+      <h1 [class]="!isCelsius ? 'is-celsius' : 'is-fahrenheit'" (click)="isCelsiusHandler(false)">
+        °F
+      </h1>
+    </div>
+  </div>
+
+  <ul>
+    <li *ngFor="let city of cities.forecasts">
+      <p>{{ city.forecastTempTime | date: 'dd MMM HH:mm'}}</p>
+
+      <div *ngIf="isCelsius">
+        <h1>{{ city.forecastTempCelsius }}°C</h1>
+        <img [src]="city.forecastTempCelsius < 20 ? cloudImg : cloudWithSunImg">
+      </div>
+
+      <div *ngIf="!isCelsius">
+        <h1>{{ city.forecastTempFahrenheit }}°F</h1>
+        <img [src]="city.forecastTempFahrenheit < 68 ? cloudImg : cloudWithSunImg">
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,6 +1,12 @@
 export interface ICitiesInfo {
   id: number;
-  temp: number;
-  name: string;
   isCelsius: boolean;
+  name: string;
+  tempCelsius: number;
+  tempFahrenheit: number;
+  forecasts: {
+    forecastTempTime: string;
+    forecastTemp: number;
+    forecastTempFahrenheit: number;
+  };
 }

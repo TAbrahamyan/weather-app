@@ -1,5 +1,4 @@
-@import '../mixins';
-@import '../variables';
+@import '../../app';
 
 .weather-cards {
   &__cards {
@@ -79,5 +78,10 @@
       width: 100px;
       height: 100px;
     }
+  }
+
+  .more-info {
+    outline: none;
+    cursor: pointer;
   }
 }

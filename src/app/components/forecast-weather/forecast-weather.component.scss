@@ -1,0 +1,63 @@
+@import '../../app';
+
+.forecast-weather {
+  display: $displayFlex;
+  flex-direction: $flexColumn;
+
+  h1 {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .switcher {
+    @include flex-content;
+    margin: 1rem 0;
+
+    h1 {
+      font-size: 1.3em;
+      margin: 0;
+
+      &:nth-child(2) {
+        margin-left: 5px;
+        margin-right: 3px;
+      }
+
+      &:not(:nth-child(2)) {
+        cursor: pointer;
+      }
+    }
+
+    .is-celsius {
+      color: #FF6B00;
+      pointer-events: none;
+    }
+
+    .is-fahrenheit {
+      color: #000;
+      pointer-events: auto;
+    }
+  }
+
+  ul {
+    display: $displayFlex;
+    justify-content: space-evenly;
+    list-style: none;
+    text-align: center;
+    animation: animate-zoom 0.5s;
+
+    @keyframes animate-zoom {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(0.5);
+      }
+      75% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  }
+}

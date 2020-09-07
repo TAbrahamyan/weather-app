@@ -1,0 +1,11 @@
+@import '../../app';
+
+div {
+  @include flex-content;
+  flex-direction: $flexColumn;
+  margin-top: 5rem;
+
+  span {
+    color: red;
+  }
+}

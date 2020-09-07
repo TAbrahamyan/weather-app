@@ -9,9 +9,7 @@
             °C
           </h1>
 
-          <h1>
-            /
-          </h1>
+          <h1>/</h1>
 
           <h1 [class]="!city.isCelsius ? 'is-celsius' : 'is-fahrenheit'" (click)="isCelsiusHandler(i, false)">
             °F
@@ -21,15 +19,18 @@
 
       <div class="weather-cards__result">
         <div *ngIf="city.isCelsius">
-          <img [src]="city.temp < 20 ? cloudImg : cloudWithSunImg">
-          <h1>{{ city.temp }}°C</h1>
+          <img [src]="city.tempCelsius < 20 ? cloudImg : cloudWithSunImg">
+          <h1>{{ city.tempCelsius }}°C</h1>
         </div>
 
         <div *ngIf="!city.isCelsius">
-          <img [src]="city.temp < 68 ? cloudImg : cloudWithSunImg">
-          <h1>{{ city.temp }}°F</h1>
+          <img [src]="city.tempFahrenheit < 68 ? cloudImg : cloudWithSunImg">
+          <h1>{{ city.tempFahrenheit }}°F</h1>
         </div>
+
       </div>
+
+      <p [routerLink]="['/forecast-weather', i]" class="more-info">Get more information</p>
     </div>
   </div>
 </div>
