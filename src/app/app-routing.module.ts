@@ -6,9 +6,9 @@ import { ForecastWeatherComponent } from './components/forecast-weather/forecast
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: WeatherComponent },
-  { path: 'forecast-weather/:id', component: ForecastWeatherComponent },
+  { path: 'forecast-weather/:name', component: ForecastWeatherComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];
 
