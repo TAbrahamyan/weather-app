@@ -8,7 +8,7 @@
       <input
         class="form-control"
         [textMask]="{mask: searchWeatherService.stringMask, guide: false}"
-        [(ngModel)]="weatherService.inputValue"
+        [formControl]="weatherService.inputValue"
         (keyup.enter)="searchWeatherService.addCityHandler()"
       />
 
@@ -16,7 +16,7 @@
         <button
           class="btn btn-primary"
           (click)="searchWeatherService.addCityHandler()"
-          [disabled]="!weatherService.inputValue"
+          [disabled]="!weatherService.inputValue.value"
         >
           Add
         </button>

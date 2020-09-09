@@ -1,32 +1,30 @@
 import { Injectable } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+
 import { ICitiesInfo } from '../interfaces';
 
 const API_KEY: string = '434aaa551c8218a43b2c291d6e2ca8bc';
+
 @Injectable({ providedIn: 'root' })
 
 export class WeatherService {
-  inputValue: string = '';
+  inputValue: FormControl = new FormControl('');
   validationText: string = '';
   cities: ICitiesInfo[] = [];
 
-  async fetchWeathers(): Promise<void> {
-    try {
-      let url: string;
+  constructor(private http: HttpClient) { }
 
-      if (location.protocol === 'http:') {
-        url = `http://api.openweathermap.org/data/2.5/forecast?q=${this.inputValue}&units=metric&cnt=9&APPID=${API_KEY}`;
-      } else {
-        url = `https://api.openweathermap.org/data/2.5/forecast?q=${this.inputValue}&units=metric&cnt=9&APPID=${API_KEY}`;
-      }
+  fetchWeathers(): void {
+    let url: string;
 
-      const response: Response = await fetch(url);
-      const data = await response.json();
+    if (location.protocol === 'http:') {
+      url = `http://api.openweathermap.org/data/2.5/forecast?q=${this.inputValue.value}&units=metric&cnt=9&APPID=${API_KEY}`;
+    } else {
+      url = `https://api.openweathermap.org/data/2.5/forecast?q=${this.inputValue.value}&units=metric&cnt=9&APPID=${API_KEY}`;
+    }
 
-      if (data.message) {
-        this.validationText = data?.message;
-        return;
-      }
-
+    this.http.get(url).subscribe((data: any): void => {
       this.cities.push({
         id: Date.now(),
         isCelsius: true,
@@ -41,6 +39,6 @@ export class WeatherService {
       });
 
       localStorage.setItem('cities', JSON.stringify(this.cities));
-    } catch { }
+    }, e => this.validationText = e.statusText);
   }
 }

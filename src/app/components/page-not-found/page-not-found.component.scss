@@ -1,11 +1,40 @@
-@import '../../app';
+@import '../../app.scss';
 
-div {
+.page-not-found {
   @include flex-content;
   flex-direction: $flexColumn;
-  margin-top: 5rem;
+  margin-top: 9rem;
 
-  span {
-    color: red;
+  &__404 {
+    @include flex-content;
+    flex-wrap: $flexWrap;
+
+    &__4 {
+      @include page-not-found-404;
+      background: $blueBackground;
+    }
+
+    &__0 {
+      @include page-not-found-404;
+      background: darkred;
+    }
+
+    &__404 {
+      @include page-not-found-404;
+      background: #7AC673;
+    }
+  }
+
+  button {
+    font-size: 1.5em;
+    color: white;
+    background: #7AC673;
+    border: 1px solid #7AC673;
+    border-radius: 25px;
+    margin-top: 2rem;
+    margin-left: -5rem;
+    padding: 0.3rem 3rem;
+    outline: none;
+    cursor: pointer;
   }
 }

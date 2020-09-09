@@ -70,3 +70,12 @@
     pointer-events: auto;
   }
 }
+
+@mixin page-not-found-404 {
+  font-size: 9em;
+  color: white;
+  position: relative;
+  margin-left: -5rem;
+  padding: 3rem 8rem;
+  border-radius: 50%;
+}

@@ -23,7 +23,7 @@ export class ForecastWeatherComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.cities = this.weatherService.cities.find(city => city.name === params.get('name'));
+      this.cities = this.weatherService.cities.find((city: ICitiesInfo) => city.name === params.get('name'));
     });
   }
 

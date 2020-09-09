@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 import { WeatherService } from './weather.service';
 
@@ -7,7 +8,7 @@ import { WeatherService } from './weather.service';
 export class SearchWeatherService {
   constructor(private weatherService: WeatherService) { }
 
-  stringMask = (inputValue: string): RegExp[] => [ ...inputValue ].map(() => /[a-zA-Z]/g);
+  stringMask = (inputValue: string): RegExp[] => [ ...inputValue ].map(() => /[a-zA-Z ]/g);
 
   clearListHandler(): void {
     this.weatherService.cities.length = 0;
@@ -16,20 +17,21 @@ export class SearchWeatherService {
 
   addCityHandler(): void {
     const weatherService: WeatherService = this.weatherService;
-    const existedCity: boolean = weatherService.cities.some(({ name }) => name.toLowerCase() === weatherService.inputValue.toLowerCase());
+    const existedCity: boolean =
+      weatherService.cities.some(({ name }) => name.toLowerCase() === weatherService.inputValue.value.toLowerCase());
 
-    if (!weatherService.inputValue.trim()) {
+    if (!weatherService.inputValue.value.trim()) {
       weatherService.validationText = 'Input should not be empty';
       return;
     }
 
     if (existedCity) {
-      weatherService.validationText = `City ${weatherService.inputValue} already exists on the list`;
+      weatherService.validationText = `City ${weatherService.inputValue.value} already exists on the list`;
       return;
     }
 
     weatherService.fetchWeathers();
-    weatherService.inputValue = '';
+    weatherService.inputValue = new FormControl('');
     weatherService.validationText = '';
   }
 }
