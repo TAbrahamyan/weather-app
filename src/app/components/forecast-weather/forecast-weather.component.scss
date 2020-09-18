@@ -28,22 +28,12 @@
     animation: animate-zoom 0.5s;
 
     @keyframes animate-zoom {
-      0% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(0.5);
-      }
-      75% {
-        transform: scale(1.1);
-      }
-      100% {
-        transform: scale(1);
-      }
+      0% { transform: scale(1) }
+      50% { transform: scale(0.5) }
+      75% { transform: scale(1.1) }
+      100% { transform: scale(1) }
     }
 
-    img {
-      width: 110px;
-    }
+    img { width: 110px }
   }
 }

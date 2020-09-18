@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ICitiesInfo } from '../interfaces';
 
 import { WeatherService } from './weather.service';
 
@@ -17,8 +18,8 @@ export class SearchWeatherService {
 
   addCityHandler(): void {
     const weatherService: WeatherService = this.weatherService;
-    const existedCity: boolean =
-      weatherService.cities.some(({ name }) => name.toLowerCase() === weatherService.inputValue.value.toLowerCase());
+    const existedCity: boolean = weatherService.cities.some(({ name }: ICitiesInfo): boolean =>
+      name.toLowerCase() === weatherService.inputValue.value.toLowerCase());
 
     if (!weatherService.inputValue.value.trim()) {
       weatherService.validationText = 'Input should not be empty';

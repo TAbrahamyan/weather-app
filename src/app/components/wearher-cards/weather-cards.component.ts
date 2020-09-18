@@ -16,7 +16,7 @@ export class WeatherCardsComponent {
   constructor(public weatherService: WeatherService) { }
 
   isCelsiusHandler(cityIndex: number, isCelsius: boolean): void {
-    this.weatherService.cities.map((city: ICitiesInfo, index: number) => {
+    this.weatherService.cities.map((city: ICitiesInfo, index: number): ICitiesInfo => {
       if (index === cityIndex) {
         if (isCelsius) {
           city.isCelsius = isCelsius;

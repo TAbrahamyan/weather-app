@@ -31,7 +31,7 @@ export class WeatherService {
         name: data.city.name,
         tempCelsius: Math.round(data.list[0].main.temp),
         tempFahrenheit: Math.round((data.list[0].main.temp * 9 / 5) + 32),
-        forecasts: data.list.map((city: any) => ({
+        forecasts: data.list.map((city: any): any => ({
           forecastTempTime: city.dt_txt,
           forecastTempCelsius: Math.round(city.main.temp),
           forecastTempFahrenheit: Math.round((city.main.temp * 9 / 5) + 32),

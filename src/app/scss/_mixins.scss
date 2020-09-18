@@ -9,12 +9,8 @@
     animation: animate-zoom 0.5s ease-in;
 
     @keyframes animate-zoom {
-      0% {
-        transform: scale(0);
-      }
-      100% {
-        transform: scale(1);
-      }
+      0% { transform: scale(0) }
+      100% { transform: scale(1) }
     }
   }
 
@@ -22,12 +18,8 @@
     animation: animate-top 0.7s ease-in;
 
     @keyframes animate-top {
-      0% {
-        transform: translateY(-700px);
-      }
-      100% {
-        transform: translateY(0);
-      }
+      0% { transform: translateY(-700px) }
+      100% { transform: translateY(0) }
     }
   }
 
@@ -35,12 +27,8 @@
     animation: animate-bottom 0.8s ease-in;
 
     @keyframes animate-bottom {
-      0% {
-        transform: translateY(700px);
-      }
-      100% {
-        transform: translateY(0);
-      }
+      0% { transform: translateY(700px) }
+      100% { transform: translateY(0) }
     }
   }
 }
@@ -55,9 +43,7 @@
       margin-right: 3px;
     }
 
-    &:not(:nth-child(2)) {
-      cursor: pointer;
-    }
+    &:not(:nth-child(2)) { cursor: pointer }
   }
 
   .is-celsius {
