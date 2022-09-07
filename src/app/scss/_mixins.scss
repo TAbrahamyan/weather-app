@@ -1,5 +1,5 @@
 @mixin flex-content {
-  display: $displayFlex;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -49,11 +49,13 @@
   .is-celsius {
     color: #FF6B00;
     pointer-events: none;
+    font-weight: 800;
   }
 
   .is-fahrenheit {
     color: #000;
     pointer-events: auto;
+    font-weight: 800;
   }
 }
 

@@ -1,32 +1,22 @@
 @import '../../app';
 
 .search-weather {
-  display: $displayFlex;
-  flex-direction: $flexColumn;
-  flex-wrap: $flexWrap;
-  width: $width100vw;
-  margin-top: $space1rem;
-
-  p {
-    font-size: 1.5em;
-    text-align: $centerText;
-    color: #253858;
-  }
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100vw;
+  margin-top: 1rem;
 
   .validation-text {
     color: red;
-    text-align: $centerText;
+    text-align: center;
     font-size: 1em;
   }
 
   &__searching {
     @include flex-content;
-    flex-wrap: $flexWrap;
-
-    @media (max-width: 585px) {
-      display: $displayFlex;
-      flex-direction: $flexColumn;
-    }
+    flex-wrap: wrap;
+    gap: 15px;
 
     input {
       height: 40px;
@@ -34,11 +24,10 @@
     }
 
     button {
-      margin: 0 0.5rem;
-      padding: 0.2rem 2rem;
+      height: 40px;
+      width: 100px;
       font-weight: 600;
-      background: $blueBackground;
-      border-color: #395FAA;
+      background: $primaryColor;
     }
   }
 }

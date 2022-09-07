@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { WeatherService } from '../..//services/weather.service';
+import { WeatherService } from '../../services/weather.service';
 import { ICitiesInfo } from '../../interfaces';
 
 @Component({
@@ -11,9 +11,9 @@ import { ICitiesInfo } from '../../interfaces';
 })
 
 export class ForecastWeatherComponent implements OnInit {
-  cities: ICitiesInfo;
   cloudImg: string = '../../../assets/img/cloud.png';
-  cloudWithSunImg: string = '../../../assets//img/cloud-with-sun.png';
+  cloudWithSunImg: string = '../../../assets//img/cloud_with_sun.png';
+  cityForecast: ICitiesInfo;
   isCelsius: boolean = true;
 
   constructor(
@@ -23,15 +23,11 @@ export class ForecastWeatherComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.cities = this.weatherService.cities.find((city: ICitiesInfo): boolean => city.name === params.get('name'));
+      this.cityForecast = this.weatherService.cities.find((city: ICitiesInfo): boolean => city.name === params.get('name'));
     });
   }
 
   isCelsiusHandler(isCelsius: boolean): void {
-    if (isCelsius) {
-      this.isCelsius = isCelsius;
-    } else {
-      this.isCelsius = isCelsius;
-    }
+    this.isCelsius = isCelsius;
   }
 }

@@ -1,29 +1,29 @@
 @import '../../app';
 
 .weather-cards {
-  display: $displayFlex;
-  flex-wrap: $flexWrap;
-  width: $width100vw;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+  gap: 20px;
 
   @media (max-width: 939px) {
-    display: $displayFlex;
+    display: flex;
     justify-content: center;
   }
 
   h1 { font-size: 1.5em }
 
   &__body {
-    border: 2px solid #ccc;
-    border-radius: 35px;
-    padding: 2rem;
-    margin: 1.1rem 1.1rem 0 1.05rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 28px;
 
     @include cards-animation;
   }
 
   &__info {
     @include flex-content;
-    flex-direction: $flexColumn;
+    flex-direction: column;
 
     div {
       @include flex-content;
@@ -33,10 +33,10 @@
   }
 
   &__result {
-    display: $displayFlex;
+    display: flex;
     flex-direction: row;
 
-    div { display: $displayFlex }
+    div { display: flex }
 
     h1 {
       font-size: 2em;

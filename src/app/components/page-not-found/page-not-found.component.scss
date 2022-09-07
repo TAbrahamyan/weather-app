@@ -2,16 +2,16 @@
 
 .page-not-found {
   @include flex-content;
-  flex-direction: $flexColumn;
-  margin-top: 9rem;
+  flex-direction: column;
+  margin-top: 3rem;
 
   &__404 {
     @include flex-content;
-    flex-wrap: $flexWrap;
+    flex-wrap: wrap;
 
     &__4 {
       @include page-not-found-404;
-      background: $blueBackground;
+      background: $primaryColor;
     }
 
     &__0 {
@@ -30,10 +30,12 @@
     color: white;
     background: #7AC673;
     border: 1px solid #7AC673;
-    border-radius: 25px;
+    border-radius: 8px;
     margin-top: 2rem;
+    margin-bottom: 2rem;
     margin-left: -5rem;
-    padding: 0.3rem 3rem;
+    height: 40px;
+    width: 250px;
     outline: none;
     cursor: pointer;
   }

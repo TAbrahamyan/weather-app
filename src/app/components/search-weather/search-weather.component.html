@@ -1,38 +1,32 @@
 <div class="search-weather">
-  <p>
-    Write country name which you want to know the weather
-  </p>
+  <div class="search-weather__searching">
+    <input
+      class="form-control"
+      [textMask]="{mask: stringMask, guide: false}"
+      [formControl]="weatherService.inputValue"
+      (keyup.enter)="addCity()"
+    />
 
-  <div>
-    <div class="search-weather__searching">
-      <input
-        class="form-control"
-        [textMask]="{mask: searchWeatherService.stringMask, guide: false}"
-        [formControl]="weatherService.inputValue"
-        (keyup.enter)="searchWeatherService.addCityHandler()"
-      />
+    <button
+      class="btn btn-primary"
+      (click)="addCity()"
+      [disabled]="!weatherService.inputValue.value"
+    >
+      Add
+    </button>
 
-      <div>
-        <button
-          class="btn btn-primary"
-          (click)="searchWeatherService.addCityHandler()"
-          [disabled]="!weatherService.inputValue.value"
-        >
-          Add
-        </button>
-
-        <button
-          class="btn btn-primary"
-          (click)="searchWeatherService.clearListHandler()"
-          [disabled]="!weatherService.cities.length"
-        >
-          Clear
-        </button>
-      </div>
-    </div>
-
-    <p class="validation-text">
-      {{ weatherService.validationText }}
-    </p>
+    <button
+      class="btn btn-primary"
+      (click)="clearList()"
+      [disabled]="!weatherService.cities.length"
+    >
+      Clear
+    </button>
   </div>
+
+  <ng-container *ngIf="weatherService.validationText">
+    <p class="validation-text">
+      {{ weatherService.validationText | titlecase }}
+    </p>
+  </ng-container>
 </div>

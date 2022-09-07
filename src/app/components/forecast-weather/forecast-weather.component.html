@@ -1,13 +1,13 @@
-<div class="forecast-weather" *ngIf="cities">
+<div class="forecast-weather" *ngIf="cityForecast">
   <div class="forecast-weather__info">
-    <h1>{{ cities.name }}</h1>
+    <h1>{{ cityForecast.name }}</h1>
 
     <div class="switcher">
       <h1 [class]="isCelsius ? 'is-celsius' : 'is-fahrenheit'" (click)="isCelsiusHandler(true)">
         °C
       </h1>
 
-      <h1>/</h1>
+      <h1>|</h1>
 
       <h1 [class]="!isCelsius ? 'is-celsius' : 'is-fahrenheit'" (click)="isCelsiusHandler(false)">
         °F
@@ -16,17 +16,17 @@
   </div>
 
   <div class="forecast-weather__list">
-    <div class="forecast-weather__result" *ngFor="let city of cities.forecasts">
-      <p>{{ city.forecastTempTime | date: 'dd MMM HH:mm'}}</p>
+    <div class="forecast-weather__result" *ngFor="let forecast of cityForecast.forecasts">
+      <p>{{ forecast.forecastTempTime | date: 'dd MMM HH:mm'}}</p>
 
       <ng-container *ngIf="isCelsius; else isFahrenheit">
-        <h1>{{ city.forecastTempCelsius }}°C</h1>
-        <img [src]="city.forecastTempCelsius < 20 ? cloudImg : cloudWithSunImg">
+        <h1>{{ forecast.forecastTempCelsius }}°C</h1>
+        <img [src]="forecast.forecastTempCelsius < 20 ? cloudImg : cloudWithSunImg">
       </ng-container>
 
       <ng-template #isFahrenheit>
-        <h1>{{ city.forecastTempFahrenheit }}°F</h1>
-        <img [src]="city.forecastTempFahrenheit < 67 ? cloudImg : cloudWithSunImg">
+        <h1>{{ forecast.forecastTempFahrenheit }}°F</h1>
+        <img [src]="forecast.forecastTempFahrenheit < 67 ? cloudImg : cloudWithSunImg">
       </ng-template>
     </div>
   </div>

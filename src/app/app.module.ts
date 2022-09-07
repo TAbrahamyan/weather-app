@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TextMaskModule } from 'angular2-text-mask';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -30,6 +31,7 @@ import { AppRoutingModule } from './app-routing.module';
     TextMaskModule,
     AppRoutingModule,
     HttpClientModule,
+    RouterModule,
   ],
   providers: [],
   bootstrap: [ AppComponent ]

@@ -2,8 +2,8 @@
 
 .header {
   @include flex-content;
-  background: $blueBackground;
-  width: $width100vw;
+  background: $primaryColor;
+  width: 100vw;
   padding: 3rem;
   border-radius: 0 0 75px 75px;
   box-shadow: 0px 8px 11px 4px #ccc;
@@ -13,7 +13,7 @@
   h1 {
     font-size: 4em;
     font-weight: 600;
-    text-align: $centerText;
+    text-align: center;
     color: #ffeeef;
   }
 }
